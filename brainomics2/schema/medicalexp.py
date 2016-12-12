@@ -19,17 +19,26 @@ from yams.buildobjs import Bytes
 
 class Subject(EntityType):
     """ The subject """
-    code_in_study = String(
-        required=True, unique=True, fulltextindexed=True, indexed=True,
-        maxsize=64)
+    code_in_study = String(required=True,
+                           unique=True,
+                           fulltextindexed=True,
+                           indexed=True,
+                           maxsize=64)
     identifier = String(required=True, maxsize=128, unique=True)
     surname = String(fulltextindexed=True, maxsize=256)
-    gender = String(
-        required=True, indexed=True, vocabulary=('male', 'female', 'unknown'))
-    handedness = String(
-        required=True, indexed=True,
-        vocabulary=('right', 'left', 'ambidextrous', 'mixed', 'unknown'))
+    gender = String(required=True,
+                    indexed=True,
+                    vocabulary=('male', 'female', 'unknown'))
+    handedness = String(required=True,
+                        indexed=True,
+                        vocabulary=('right',
+                                    'left',
+                                    'ambidextrous',
+                                    'mixed',
+                                    'unknown'))
     position_in_family = String(maxsize=64)
+    siblings_status = Int(required=False)
+    dataset_status = String(maxsize=64, required=False, default='Valid')
 
 
 class Study(EntityType):
